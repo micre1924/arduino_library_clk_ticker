@@ -5,7 +5,7 @@
  Editor:	http://www.visualmicro.com
 */
 
-#include "smy_clk_ticker.h"
+#include "clk_ticker.h"
 
 	clkTicker::clkTicker(int periode)
 	{
