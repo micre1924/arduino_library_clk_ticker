@@ -7,10 +7,10 @@
 
 #include "clk_ticker.h"
 
-	clkTicker::clkTicker(int periode, tickTimeMode mode)
+	clkTicker::clkTicker(int periode, bool is_micro)
 	{
 		Period = periode;
-		TimeMode = mode;
+		isMicro = is_micro;
 	}
 
 	clkTicker::clkTicker()
@@ -20,7 +20,7 @@
 
 	bool clkTicker::tick()
 	{
-		lastTickTimestamp = TimeMode ? micros() : millis();
+		lastTickTimestamp = isMicro ? micros() : millis();
 		PeriodeInTime = lastTickTimestamp - OriginTimePoint;
 		if (PeriodeInTime > Period)
 		{
@@ -31,5 +31,5 @@
 	}
 
 	bool clkTicker::reset() {
-		OriginTimePoint = TimeMode ? micros() : millis();
+		OriginTimePoint = isMicro ? micros() : millis();
 	}

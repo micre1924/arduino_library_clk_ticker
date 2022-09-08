@@ -14,17 +14,12 @@
 	#include "WProgram.h"
 #endif
 
-enum tickTimeMode{
-	Microseconds,
-	Milliseconds
-};
-
 class clkTicker {
 public:
 	unsigned long OriginTimePoint = 0, PeriodeInTime = 0, Period = 0, lastTickTimestamp = 0;
-	tickTimeMode TimeMode = Milliseconds;
+	bool isMicro = false;
 
-	clkTicker(int periode, tickTimeMode mode);
+	clkTicker(int periode, bool is_micro);
 
 	clkTicker();
 
