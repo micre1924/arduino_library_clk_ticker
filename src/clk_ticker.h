@@ -13,14 +13,18 @@
 #else
 	#include "WProgram.h"
 #endif
-class clkTicker
-{
-public:
-	long OriginTimePoint = 0;
-	long PeriodeInTime = 0;
-	long Period = 0;
 
-	clkTicker(int periode);
+enum tickTimeMode{
+	Microseconds,
+	Milliseconds
+};
+
+class clkTicker {
+public:
+	unsigned long OriginTimePoint = 0, PeriodeInTime = 0, Period = 0, lastTickTimestamp = 0;
+	tickTimeMode TimeMode = Milliseconds;
+
+	clkTicker(int periode, tickTimeMode mode);
 
 	clkTicker();
 

@@ -5,11 +5,12 @@
  Editor:	http://www.visualmicro.com
 */
 
-#include "smy_clk_ticker.h"
+#include "clk_ticker.h"
 
-	clkTicker::clkTicker(int periode)
+	clkTicker::clkTicker(int periode, tickTimeMode mode)
 	{
 		Period = periode;
+		TimeMode = mode;
 	}
 
 	clkTicker::clkTicker()
@@ -19,15 +20,16 @@
 
 	bool clkTicker::tick()
 	{
-		PeriodeInTime = millis() - OriginTimePoint;
+		lastTickTimestamp = TimeMode ? micros() : millis();
+		PeriodeInTime = lastTickTimestamp - OriginTimePoint;
 		if (PeriodeInTime > Period)
 		{
-			OriginTimePoint = millis();
+			OriginTimePoint = lastTickTimestamp;
 			return 1;
 		}
 		else return 0;
 	}
 
 	bool clkTicker::reset() {
-		OriginTimePoint = millis();
+		OriginTimePoint = TimeMode ? micros() : millis();
 	}
