@@ -7,7 +7,7 @@
 
 #include "clk_ticker.h"
 
-	clkTicker::clkTicker(int periode, bool is_micro)
+	clkTicker::clkTicker(unsigned long periode, bool is_micro)
 	{
 		Period = periode;
 		isMicro = is_micro;
