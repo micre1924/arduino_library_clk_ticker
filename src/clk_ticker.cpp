@@ -1,12 +1,5 @@
-/*
- Name:		smy_clk_ticker.cpp
- Created:	5/20/2021 2:21:30 PM
- Author:	GPD
- Editor:	http://www.visualmicro.com
-*/
-
 #include "clk_ticker.h"
-
+namespace mrc{
 	clkTicker::clkTicker(unsigned long periode, bool is_micro)
 	{
 		Period = periode;
@@ -30,6 +23,7 @@
 		else return 0;
 	}
 
-	bool clkTicker::reset() {
+	void clkTicker::reset() {
 		OriginTimePoint = isMicro ? micros() : millis();
 	}
+}
